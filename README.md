@@ -1,13 +1,15 @@
-# rspec.vim
+# rspec-cucumber.vim
 
-This is a lightweight RSpec runner for Vim and MacVim.
+This is a lightweight RSpec / Cucumber runner for Vim and MacVim.
+This is based off the original vim-rspec by thoughtbot:
+[vim-rspec](https://github.com/thoughtbot/vim-rspec)
 
 ## Installation
 
 Recommended installation with [vundle](https://github.com/gmarik/vundle):
 
 ```vim
-Plugin 'thoughtbot/vim-rspec'
+Plugin 'michaeldeol/vim-rspec-cucumber'
 ```
 
 If using zsh on OS X it may be necessary to move `/etc/zshenv` to `/etc/zshrc`.
@@ -19,40 +21,16 @@ If using zsh on OS X it may be necessary to move `/etc/zshenv` to `/etc/zshrc`.
 Add your preferred key mappings to your `.vimrc` file.
 
 ```vim
-" RSpec.vim mappings
-map <Leader>t :call RunCurrentSpecFile()<CR>
-map <Leader>s :call RunNearestSpec()<CR>
-map <Leader>l :call RunLastSpec()<CR>
-map <Leader>a :call RunAllSpecs()<CR>
-```
-
-### Custom command
-
-Overwrite the `g:rspec_command` variable to execute a custom command.
-
-Example:
-
-```vim
-let g:rspec_command = "!rspec --drb {spec}"
-```
-
-This `g:rspec_command` variable can be used to support any number of test
-runners or pre-loaders. For example, to use
-[Dispatch](https://github.com/tpope/vim-dispatch):
-
-```vim
-let g:rspec_command = "Dispatch rspec {spec}"
-```
-Or, [Dispatch](https://github.com/tpope/vim-dispatch) and
-[Zeus](https://github.com/burke/zeus) together:
-
-```vim
-let g:rspec_command = "compiler rspec | set makeprg=zeus | Make rspec {spec}"
+" rspec-cucumber.vim mappings
+map <Leader>t :call RunCurrentTestFile()<CR>
+map <Leader>s :call RunNearestTest()<CR>
+map <Leader>l :call RunLastTest()<CR>
+map <Leader>a :call RunAllTests()<CR>
 ```
 
 ### Custom runners
 
-Overwrite the `g:rspec_runner` variable to set a custom launch script. At the
+Overwrite the `g:test_runner` variable to set a custom launch script. At the
 moment there are two MacVim-specific runners, i.e. `os_x_terminal` and
 `os_x_iterm`. The default is `os_x_terminal`, but you can set this to anything
 you want, provided you include the appropriate script inside the plugin's
@@ -60,12 +38,12 @@ you want, provided you include the appropriate script inside the plugin's
 
 #### iTerm instead of Terminal
 
-If you use iTerm, you can set `g:rspec_runner` to use the included iterm
+If you use iTerm, you can set `g:test_runner` to use the included iterm
 launching script. This will run the specs in the last session of the current
 terminal.
 
 ```vim
-let g:rspec_runner = "os_x_iterm"
+let g:test_runner = "os_x_iterm"
 ```
 
 Credits
@@ -73,16 +51,18 @@ Credits
 
 ![thoughtbot](http://thoughtbot.com/images/tm/logo.png)
 
-rspec.vim is maintained by [thoughtbot, inc](http://thoughtbot.com/community)
+The original rspec.vim is maintained by [thoughtbot, inc](http://thoughtbot.com/community)
 and [contributors](https://github.com/thoughtbot/vim-rspec/graphs/contributors)
 like you. Thank you!
 
 It was strongly influenced by Gary Bernhardt's [Destroy All
 Software](https://www.destroyallsoftware.com/screencasts) screencasts.
 
+Updated by Michael Deol to accomodate both RSpec and Cucumber tests.
+
 ## License
 
-rspec.vim is copyright © 2014 thoughtbot. It is free software, and may be
+rspec-cucumber.vim is copyright © 2014 Michael Deol. It is free software, and may be
 redistributed under the terms specified in the `LICENSE` file.
 
 The names and logos for thoughtbot are trademarks of thoughtbot, inc.

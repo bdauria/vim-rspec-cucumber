@@ -1,5 +1,3 @@
-* 2013-05-03 - Removed explicit support for Dispatch because it introduces  a
-  load order dependency. Set `g:rspec_command` in your .vimrc if you want to
-  use Dispatch or any other test runner.
-* 2013-04-11 - `RunCurrentSpecFile` and `RunNearestSpec` will fall back to
-  `RunLastSpec` if not in spec file.
+* 2014-12-11 - Updated the naming of this project to reflect the change
+  from rspec only to both rspec and cucumber. Updated the vim file to now check which
+  file type you are on in order to run the appropriate rspec / cucumber test.
