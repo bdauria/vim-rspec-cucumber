@@ -14,7 +14,7 @@ endfunction
 
 function! BuildCommand()
   if CheckRSpec()
-    return "bundle exec rspec --color {test}"
+    return "bundle exec rspec --color --format doc {test}"
   elseif CheckCucumber()
     return "bundle exec cucumber {test}"
   else
