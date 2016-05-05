@@ -14,8 +14,14 @@ endfunction
 
 function! BuildCommand()
   if CheckRSpec()
+    if s:RspecCommandProvided()
+      return g:rspec_command
+    endif
     return "bundle exec rspec --color --format doc {test}"
   elseif CheckCucumber()
+    if s:CucumberCommandProvided()
+      return g:cucumber_command
+    endif
     return "bundle exec cucumber {test}"
   else
     return 0
@@ -82,4 +88,12 @@ endfunction
 
 function! RunTests(test)
   execute substitute(GetCommand(), "{test}", a:test, "g")
+endfunction
+
+function! s:RspecCommandProvided()
+  return exists("g:rspec_command")
+endfunction
+
+function! s:CucumberCommandProvided()
+  return exists("g:cucumber_command")
 endfunction
