@@ -31,7 +31,9 @@ endfunction
 function! GetCommand()
   let s:cmd = BuildCommand()
 
-  if has("gui_running") && has("gui_macvim")
+  if s:IsCustomCommand(s:cmd)
+    return s:cmd
+  elseif has("gui_running") && has("gui_macvim")
     return "silent !" . s:plugin_path . "/bin/" . g:rspec_runner . " '" . s:cmd . "'"
   elseif has("win32") && fnamemodify(&shell, ':t') ==? "cmd.exe"
     return "!cls && echo " . s:cmd . " && " . s:cmd
@@ -39,6 +41,7 @@ function! GetCommand()
     return "!clear && echo " . s:cmd . " && " . s:cmd
   endif
 endfunction
+
 
 function! RunAllTests()
   let l:test = ""
@@ -96,4 +99,10 @@ endfunction
 
 function! s:CucumberCommandProvided()
   return exists("g:cucumber_command")
+endfunction
+
+function! s:IsCustomCommand(command)
+  let l:customRspec = s:RspecCommandProvided() && a:command == g:rspec_command
+  let l:customCucumber = s:CucumberCommandProvided() && a:command == g:cucumber_command
+  return l:customRspec || l:customCucumber
 endfunction
