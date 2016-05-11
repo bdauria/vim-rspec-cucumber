@@ -32,9 +32,11 @@ map <Leader>a :call RunAllTests()<CR>
 ### Custom commands
 You can define custom commands for both RSpec and Cucumber, for instance:
 
+```vim
 " vim-rspec-cucumber custom commands
 let g:rspec_command = "Dispatch rspec {test}"
 let g:cucumber_command = "Dispatch bundle exec cucumber {test}"
+```
 
 
 ### Custom runners
