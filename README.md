@@ -3,13 +3,14 @@
 This is a lightweight RSpec / Cucumber runner for Vim and MacVim.
 This is based off the original vim-rspec by thoughtbot:
 [vim-rspec](https://github.com/thoughtbot/vim-rspec)
+and forked from Michael Deol's [vim-rspec-cucumber] (https://github.com/michaeldeol/vim-rspec-cucumber)
 
 ## Installation
 
 Recommended installation with [vundle](https://github.com/gmarik/vundle):
 
 ```vim
-Plugin 'michaeldeol/vim-rspec-cucumber'
+Plugin 'bdauria/vim-rspec-cucumber'
 ```
 
 If using zsh on OS X it may be necessary to move `/etc/zshenv` to `/etc/zshrc`.
@@ -27,6 +28,14 @@ map <Leader>s :call RunNearestTest()<CR>
 map <Leader>l :call RunLastTest()<CR>
 map <Leader>a :call RunAllTests()<CR>
 ```
+
+### Custom commands
+You can define custom commands for both RSpec and Cucumber, for instance:
+
+" vim-rspec-cucumber custom commands
+let g:rspec_command = "Dispatch rspec {test}"
+let g:cucumber_command = "Dispatch bundle exec cucumber {test}"
+
 
 ### Custom runners
 
